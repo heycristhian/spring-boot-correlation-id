@@ -19,7 +19,7 @@ public class CorrelationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         final String correlationId = getCorrelationIdFromHeader(request);
         MDC.put(CORRELATION_ID_LOG_VAR_NAME, correlationId);
-        response.addHeader(CORRELATION_ID_HEADER_NAME, MDC.get(CORRELATION_ID_LOG_VAR_NAME));
+        response.addHeader(CORRELATION_ID_HEADER_NAME, correlationId);
         return true;
     }
 

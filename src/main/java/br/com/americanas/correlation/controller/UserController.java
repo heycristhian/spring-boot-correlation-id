@@ -28,7 +28,6 @@ public class UserController {
         var user = service.save(userRequest);
         log.info("Usuário salvo com sucesso");
 
-
         URI uri = uriBuilder.path("/api/users/{id}").buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).body(MDC.get("correlationId"));
     }
